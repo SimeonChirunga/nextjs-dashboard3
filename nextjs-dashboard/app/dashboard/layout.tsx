@@ -1,5 +1,7 @@
 import SideNav from '@/app/ui/dashboard/sidenav';
 import { Metadata } from 'next';
+import { auth } from '@/auth';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: {
@@ -10,7 +12,15 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
  
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default async function Layout({ children }: { children: React.ReactNode }) {
+  // Check authentication
+  const session = await auth();
+  
+  // Redirect to login if not authenticated
+  if (!session) {
+    redirect('/login');
+  }
+
   return (
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
       <div className="w-full flex-none md:w-64">

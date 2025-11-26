@@ -8,6 +8,7 @@ import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardSkeleton} from '@/app
 import CardWrapper from '@/app/ui/dashboard/cards';
 import { Metadata } from 'next';
 
+
 export const metadata: Metadata = {
   title: 'Dashboard',
 };
@@ -15,7 +16,8 @@ export const metadata: Metadata = {
 
  
 export default async function Page() {
-    
+
+
     
      const {
     numberOfInvoices,
